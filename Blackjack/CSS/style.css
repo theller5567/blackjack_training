@@ -1,0 +1,92 @@
+
+body {
+  background: url('../images/Louis-Vuitton.jpg');
+  background-size: cover;
+  color: gold;
+}
+
+
+
+.bottom-table {
+      margin-top: 175px;
+    }
+
+h3 {
+      margin-top: 60px;
+    }
+
+#startGame {
+  margin-top: 100px;
+}
+
+}
+.bet-buttons {
+  margin: 20px auto;
+}
+.bet-btn {
+  color: #000;
+  width: 150px;
+  border-radius: 50%;
+  background: none;
+  padding: 30px;
+
+}
+
+.dealer-cards .card:nth-child(1)::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: rgba(0,0,0,1);
+  z-index: 5;
+  border: 1px solid gold;
+  transition: all 300ms;
+}
+
+.dealer-cards .card.show-card::after {
+  opacity: 0;
+}
+
+.start-game-module {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  background-image: url('../images/bg.jpeg');
+  background-size: cover;
+  background-position: top center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.card {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  width: 150px;
+  font-size: 20px;
+  font-weight: 700;
+  height: 225px;
+  background-color: #444;
+  color: white;
+}
+
+.card .card-number {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: white;
+}
+
+.card .card-suit {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: white;
+
+}
