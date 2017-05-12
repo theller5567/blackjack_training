@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>BlackJack</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+  <header>
+	<div class="container text-center">
+		<h1>BLACKJACK</h1>
+	</div>
+
+  </header>
+
+				<div class="start-game-module">
+				<div class="container text-center">
+					<button id="startGame" class="btn  btn-lg btn-primary">Let's Play Blackjack!</button>
+				</div>
+				</div>
+
+
+			<div class="container">
+				<div class="col-md-6">
+		  		<h3 id="dealer-label">Dealer: </h3>
+					<div id="dealer-hand" class="hand"></div>
+					<div class="dealer-cards"></div>
+				</div>
+				<div class="col-md-6">
+		  		<h3 id="player-label">Player: </h3>
+					<div id="player-hand" class="hand"></div>
+					<div class="player-cards"></div>
+				</div>
+			</div>
+			<div class="bottom-table well text-center">
+				<button id="deal-button" class="btn  btn-lg btn-primary">Deal</button>
+				<button id="hit-button" class="btn  btn-lg btn-primary">Hit</button>
+				<button id="stand-button" class="btn  btn-lg btn-primary">Stand</button>
+				<div class="bet-buttons">
+					<div class="row">
+							<div class="col-xs-3 col-md-3">
+								<button class="btn btn-lg bet-btn">Bet $100</button>
+							</div>
+							<div class="col-xs-3 col-md-3">
+								<button class="btn btn-lg bet-btn">Bet $150</button>
+							</div>
+							<div class="col-xs-3 col-md-3">
+								<button class="btn btn-lg bet-btn">Bet $250</button>
+							</div>
+							<div class="col-xs-3 col-md-3">
+								<button class="btn btn-lg bet-btn">Bet $500</button>
+							</div>
+						</div>
+				</div>
+
+			</div>
+
+
+
+		<!-- END OF TABLE -->
+	</div>
+
+
+
+
+
+	<script src="blackjack.js" type="text/javascript"></script>
+	</body>
+
+</html>
