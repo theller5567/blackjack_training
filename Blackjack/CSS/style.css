@@ -5,7 +5,31 @@ body {
   color: gold;
 }
 
-
+.win, .loose {
+  position: fixed;
+  width:  100%;
+  height:  100%;
+  top:  0;
+  left:  0;
+  opacity:  1;
+  background-color:  green;
+  z-index:  4;
+  transition:  all 300ms;
+  display:  none;
+  
+}
+.win h2, .loose h2 {
+    position:  absolute;
+    line-height: 48px;
+    font-size:  48px;
+    top: calc(50% - 18px);
+    left:  calc(50% - 30px);
+    text-align: center;
+    color: white;
+  }
+.loose {
+  background-color:  red;
+}
 
 .bottom-table {
       margin-top: 175px;
@@ -19,7 +43,6 @@ h3 {
   margin-top: 100px;
 }
 
-}
 .bet-buttons {
   margin: 20px auto;
 }
@@ -41,7 +64,7 @@ h3 {
   height: 100%;
   opacity: 1;
   background-color: rgba(0,0,0,1);
-  z-index: 5;
+  z-index: 3;
   border: 1px solid gold;
   transition: all 300ms;
 }
