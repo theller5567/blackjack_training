@@ -1,3 +1,7 @@
+body,html {
+  position: relative;
+  min-height:  100%;
+}
 
 body {
   background: url('../images/dark_wood.png');
@@ -121,9 +125,15 @@ body {
 }
 
 .well {
+  position:  fixed;
+  bottom:  0;
+  left:  0;
+  width:  100%;
   background-color:  #000;
   color:  white;
-  border-color: #222;
+  border:  none;
+  border-top: 1px solid #222;
+  margin:  0;
 }
 .card .card-number {
   position: absolute;
