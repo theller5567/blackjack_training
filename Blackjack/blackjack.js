@@ -133,12 +133,8 @@ $(document).ready(function() {
         }
         blackjack.dealer.points = countArray(dealerSum);
         console.log('Dealer-SUM: ', blackjack.dealer.points);
-        if(blackjack.dealer.points > 21){
-            lose();
-        }else if(blackjack.dealer.points == 21){
-            win();
-        }
-        //$('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+        
+        $('.dealerPoints').html('<h3>Not Available</h3>');
     }
 
     function Player(name){
@@ -204,9 +200,8 @@ $(document).ready(function() {
         if(playerPoints > dealerPoints){
             win();
             $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-        }else{
+        }else if(playerPoints === dealerPoints){
             $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-            loose();
         }
     }
 
@@ -217,10 +212,6 @@ $(document).ready(function() {
                 playerCash -= betAmount;
             }  
         }
-    }
-
-    function stay() {
-        //if card points are less than or equal to 21
     }
 
     function win() {

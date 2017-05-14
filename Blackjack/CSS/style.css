@@ -1,7 +1,7 @@
 
 body {
-  background: url('../images/Louis-Vuitton.jpg');
-  background-size: cover;
+  background: url('../images/dark_wood.png');
+  background-repeat: repeat;
   color: gold;
 }
 
@@ -18,21 +18,36 @@ body {
   display:  none;
   
 }
+
+.player-cards, .dealer-cards {
+  position:  relative;
+  text-align: center;
+}
+
+.playerPoints, .dealerPoints, .player-label, .dealer-label {
+  display: inline-block;
+  padding-right:  10px;
+}
+#player-label, #dealer-label  {
+  text-align: center;
+}
+
 .win h2, .loose h2 {
+    display: block;
     position:  absolute;
     line-height: 48px;
     font-size:  48px;
     top: calc(50% - 18px);
-    left:  calc(50% - 30px);
     text-align: center;
     color: white;
+    width:  100%;
   }
 .loose {
   background-color:  red;
 }
 
 .bottom-table {
-      margin-top: 175px;
+      margin-top: 20px;
     }
 
 h3 {
@@ -47,7 +62,7 @@ h3 {
   margin: 20px auto;
 }
 .bet-btn {
-  color: #000;
+  color: #ffffff;
   width: 150px;
   border-radius: 50%;
   background: none;
@@ -64,7 +79,6 @@ h3 {
   height: 100%;
   opacity: 1;
   background-color: rgba(0,0,0,1);
-  z-index: 3;
   border: 1px solid gold;
   transition: all 300ms;
 }
@@ -90,15 +104,25 @@ h3 {
 .card {
   position: relative;
   display: inline-block;
-  margin: 20px;
+  margin: 20px 20px 20px -100px;
   width: 150px;
   font-size: 20px;
   font-weight: 700;
+  box-shadow: 2px 2px 2px 5px rgba(0,0,0,0.3);
   height: 225px;
   background-color: #444;
   color: white;
+  border-radius:  4px;
+  border: 1px solid #555;
+}
+.card:nth-child(1){
+  margin-left:  0;
 }
 
+.well {
+  background-color:  #000;
+  color:  white;
+}
 .card .card-number {
   position: absolute;
   top: 5px;
