@@ -15,13 +15,15 @@ body {
   height:  100%;
   top:  0;
   left:  0;
-  opacity:  1;
+  opacity:  0.7;
   background-color:  green;
   z-index:  4;
   transition:  all 300ms;
   display:  none; 
 }
-
+.lose {
+  background-color:  red;
+}
 .mod {
 
 }
@@ -50,9 +52,7 @@ body {
     color: white;
     width:  100%;
   }
-.lose {
-  background-color:  red;
-}
+
 
 .bottom-table {
       margin-top: 20px;

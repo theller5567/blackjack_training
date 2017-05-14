@@ -55,7 +55,7 @@ $(document).ready(function() {
     }
 
     // Draw card object
-    function drawCard(min, max) { 
+    function drawCard(min, max){ 
         var min = 1;  
         var max = 52;
         var randomNum = Math.floor(Math.random() * (min - max) * -1) + min;   
@@ -64,6 +64,7 @@ $(document).ready(function() {
     }
     
     function buildCard(cardObj){
+        console.log('CardObject being Built: ', cardObj);
         if(cardObj){
             var point = cardObj.point;
             var suit = cardObj.suit;
@@ -123,12 +124,10 @@ $(document).ready(function() {
         console.log('player-SUM: ', blackjack.player.points);
         $('.playerPoints').html('<h3>'+ blackjack.player.points +'</h3>');
         if(blackjack.player.points > 21){
+            $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
             lose();
         }
-        if(blackjack.player.points == 21){
-            win();
-        }
-        
     }
     function countDealerCards(){
         var dealerSum = [];
@@ -141,7 +140,14 @@ $(document).ready(function() {
         }
         blackjack.dealer.points = countArray(dealerSum);
         console.log('Dealer-SUM: ', blackjack.dealer.points);
-        $('.dealerPoints').html('<h3>Not Available</h3>');
+        if(blackjack.player.points < 22){
+            if(blackjack.dealer.points > 21){
+                $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+                win();
+            }
+        }
+        
     }
 
     function Player(name){
@@ -198,22 +204,44 @@ $(document).ready(function() {
         newcard.holder = 'player';
         blackjack.player.cards.push(newcard);
         buildCard(newcard);
+        hitDealer();
+    }
+
+    function hitDealer(){
+        var newcard = drawCard();
+        console.log('NewCard: ',newcard);
+        newcard.holder = 'dealer';
+        blackjack.dealer.cards.push(newcard);
+        buildCard(newcard);
     }
 
     function stand(){
         var playerPoints = blackjack.player.points;
         var dealerPoints = blackjack.dealer.points;
 
-        if(playerPoints > dealerPoints){
-            win();
-            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+        if(dealerPoints > 17){
+            if(playerPoints > dealerPoints){
+                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+                $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+                win();
+            }
+            if(playerPoints < dealerPoints){
+                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+                $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+                lose();
+            }
+            if(playerPoints === dealerPoints){
+                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+                hitPlayer();
+                hitDealer();
+            }
         }
-        if(playerPoints < dealerPoints){
-            lose();
-            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-        }
-        if(playerPoints === dealerPoints){
-            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+        else {
+            if(playerPoints > dealerPoints){
+                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+                $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+                hitDealer();
+            }
         }
     }
 
@@ -239,16 +267,16 @@ $(document).ready(function() {
     }
 
     function win() {
-        reset();
+        //reset();
         console.log('win');
         $('.win').addClass('show');
-        startGame();
+        //startGame();
     }
 
     function lose() {
-        reset();
+        //reset();
         console.log('lose');
         $('.lose').addClass('show');
-        startGame();
+        //startGame();
     }
 });
