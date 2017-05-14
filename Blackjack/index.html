@@ -9,8 +9,18 @@
 </head>
 
 <body>
-	<div class="win"><h2>YOU WIN!!!</h2></div>
-	<div class="loose"><h2>YOU LOOSE!!!</h2></div>
+	<div class="win">
+		<div class="content">
+			<h2>YOU WIN!!!</h2>
+			<button class="btn btn-default btn-lg play-again">Play Again</button>
+		</div>
+	</div>
+	<div class="lose">
+		<div class="content">
+			<h2>YOU LOOSE!!!</h2>
+			<button class="btn btn-default btn-lg play-again">Play Again</button>
+		</div>
+	</div>
     <header>
         <div class="container text-center">
             <h1>BLACKJACK</h1>
@@ -23,12 +33,16 @@
     </div>
     <div class="container">
         <div class="col-md-6">
-            <h3 id="dealer-label">Dealer: <span class="dealerPoints"></span></h3>
-            <div class="dealer-cards"></div>
+        	<div class="dealer mod">
+        		<h3 id="dealer-label">Dealer: <span class="dealerPoints"></span></h3>
+            	<div class="dealer-cards"></div>
+        	</div>
         </div>
         <div class="col-md-6">
-            <h3 id="player-label">Player: <span class="playerPoints"></span></h3>
-            <div class="player-cards"></div>
+        	<div class="player mod">
+        		<h3 id="player-label">Player: <span class="playerPoints"></span></h3>
+            	<div class="player-cards"></div>
+        	</div>
         </div>
     </div>
     <div class="bottom-table well text-center">

@@ -12,11 +12,17 @@ $(document).ready(function() {
     var dealBtn = $('#deal-button');
     var hitBtn = $('#hit-button');
     var standBtn = $('#stand-button');
+    var playAgain = $('.play-again');
     var hideDealer = true;
     letsPlayBtn.on('click', startGame);
     dealBtn.on('click', deal);
     hitBtn.on('click', hit);
     standBtn.on('click', stand);
+    playAgain.on('click', function(){
+        $('.win').removeClass('show');
+        $('.lose').removeClass('show');
+        reset();
+    });
 
     function startGame() {
         $('.start-game-module').hide();
@@ -115,12 +121,14 @@ $(document).ready(function() {
         }
         blackjack.player.points = countArray(playerSum);
         console.log('player-SUM: ', blackjack.player.points);
+        $('.playerPoints').html('<h3>'+ blackjack.player.points +'</h3>');
         if(blackjack.player.points > 21){
             lose();
-        }else if(blackjack.player.points == 21){
+        }
+        if(blackjack.player.points == 21){
             win();
         }
-        $('.playerPoints').html('<h3>'+ blackjack.player.points +'</h3>');
+        
     }
     function countDealerCards(){
         var dealerSum = [];
@@ -133,7 +141,6 @@ $(document).ready(function() {
         }
         blackjack.dealer.points = countArray(dealerSum);
         console.log('Dealer-SUM: ', blackjack.dealer.points);
-        
         $('.dealerPoints').html('<h3>Not Available</h3>');
     }
 
@@ -200,7 +207,12 @@ $(document).ready(function() {
         if(playerPoints > dealerPoints){
             win();
             $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-        }else if(playerPoints === dealerPoints){
+        }
+        if(playerPoints < dealerPoints){
+            lose();
+            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+        }
+        if(playerPoints === dealerPoints){
             $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
         }
     }
@@ -214,17 +226,29 @@ $(document).ready(function() {
         }
     }
 
+    function reset(){
+        delete blackjack.player;
+        delete blackjack.deck;
+        $('.playerPoints').html('');
+        $('.dealerPoints').html('');
+        $('.player-cards').html('');
+        $('.dealer-cards').html('');
+        dealBtn.css('display', 'inline-block');
+        $('.dealer-cards').find('.card:nth-child(1)').removeClass('show-card');
+        console.log('PLAYER END',blackjack.player);
+    }
+
     function win() {
-        //reset();
+        reset();
         console.log('win');
         $('.win').addClass('show');
         startGame();
     }
 
     function lose() {
-        //reset();
-        console.log('loose');
-        $('.loose').addClass('show');
+        reset();
+        console.log('lose');
+        $('.lose').addClass('show');
         startGame();
     }
 });
