@@ -249,6 +249,7 @@ $(document).ready(function() {
         var newcard = drawCard();
         newcard.holder = 'dealer';
         blackjack.dealer.cards.push(newcard);
+        $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
         buildCard(newcard);
     }
 
