@@ -11,18 +11,23 @@ body {
 
 .win, .lose {
   position: fixed;
-  width:  100%;
-  height:  100%;
-  top:  0;
-  left:  0;
-  opacity:  0.7;
-  background-color:  green;
+  width:  60%;
+  height:  200px;
+  top:  10%;
+  left: calc(50% - 30%);
+  opacity:  1;
+  border-radius: 4px;
+  background-color:  black;
   z-index:  4;
   transition:  all 300ms;
   display:  none; 
 }
-.lose {
-  background-color:  red;
+.win h2 {
+  color: green;
+  margin-top:  10px;
+}
+.lose h2 {
+    color:  red;
 }
 .mod {
 
@@ -43,15 +48,14 @@ body {
 }
 
 .win .content, .lose .content {
-    display: block;
-    position:  absolute;
-    line-height: 48px;
-    font-size:  48px;
-    top: calc(50% - 18px);
-    text-align: center;
-    color: white;
-    width:  100%;
-  }
+  display: block;
+  position:  absolute;
+  line-height: 48px;
+  font-size:  48px;
+  text-align: center;
+  color: white;
+  width:  100%;
+}
 
 
 .bottom-table {

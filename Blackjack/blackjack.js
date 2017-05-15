@@ -64,7 +64,6 @@ $(document).ready(function() {
     }
     
     function buildCard(cardObj){
-        console.log('CardObject being Built: ', cardObj);
         if(cardObj){
             var point = cardObj.point;
             var suit = cardObj.suit;
@@ -99,7 +98,6 @@ $(document).ready(function() {
                 countCards(cardObj);
             }
         }
-        
     }
 
     function countCards(){
@@ -114,6 +112,7 @@ $(document).ready(function() {
     function countPlayerCards(){
         var playerSum = [];
         var pcards = blackjack.player.cards;
+        console.log('CardObject being Built: ', pcards);
         for (var i = 0; i < pcards.length; i++) {
             if (pcards[i].point > 10) {
                 pcards[i].point = 10;
@@ -132,6 +131,7 @@ $(document).ready(function() {
     function countDealerCards(){
         var dealerSum = [];
         var dcards = blackjack.dealer.cards;
+        console.log('CardObject being Built: ', dcards);
         for (var i = 0; i < dcards.length; i++) {
             if (dcards[i].point > 10) {
                 dcards[i].point = 10;
@@ -184,10 +184,9 @@ $(document).ready(function() {
         blackjack.dealer.cards = [carda, cardb];
         $.each(blackjack.player.cards, function( index, card ) {
           buildCard(card);
-        });
-        $.each(blackjack.dealer.cards, function( index, card ) {
+        }, $.each(blackjack.dealer.cards, function( index, card ) {
           buildCard(card);
-        });
+        }) );
     }
 
     function countArray(array) {
@@ -218,6 +217,8 @@ $(document).ready(function() {
     function stand(){
         var playerPoints = blackjack.player.points;
         var dealerPoints = blackjack.dealer.points;
+        blackjack.stand = true;
+        console.log('testing: ',blackjack.stand);
 
         if(dealerPoints > 17){
             if(playerPoints > dealerPoints){
@@ -232,8 +233,7 @@ $(document).ready(function() {
             }
             if(playerPoints === dealerPoints){
                 $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-                hitPlayer();
-                hitDealer();
+                hit();
             }
         }
         else {
