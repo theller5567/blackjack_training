@@ -16,6 +16,7 @@ $(document).ready(function() {
     var playAgain = $('.play-again');
     var cashContainer = $('.player-cash');
     var betContainer = $('.player-bet');
+    var placeBetText = $('.place-bets');
     var hideDealer = true;
     letsPlayBtn.on('click', startGame);
     dealBtn.on('click', deal);
@@ -24,6 +25,7 @@ $(document).ready(function() {
     playAgain.on('click', function(){
         $('.win').removeClass('show');
         $('.lose').removeClass('show');
+        placeBetText.addClass('show');
         $('.bet-buttons').addClass('show');
         betContainer.html('<h3>Player Bet:</h3>');
         reset();
@@ -38,6 +40,7 @@ $(document).ready(function() {
 
     function startGame() {
         $('.start-game-module').hide();
+        placeBetText.addClass('show');
         $('.bet-buttons').addClass('show');
         $('.play-buttons').removeClass('show');
     }
@@ -48,6 +51,7 @@ $(document).ready(function() {
         blackjack.player.bet += Number(betAmount);
         betContainer.html('<h3>Player Bet: $'+ blackjack.player.bet +'</h3>');
         $('.bet-buttons').addClass('remove');
+        placeBetText.addClass('remove');
         $('.play-buttons').addClass('show');
 
     }
@@ -209,6 +213,7 @@ $(document).ready(function() {
 
     function deal() {
         dealBtn.css('display', 'none');
+        placeBetText.removeClass('show');
         $('.bet-buttons').removeClass('show');
         var card1 = drawCard();
         var card2 = drawCard();
