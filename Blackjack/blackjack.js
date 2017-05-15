@@ -13,11 +13,14 @@ $(document).ready(function() {
     var dealBtn = $('#deal-button');
     var hitBtn = $('#hit-button');
     var standBtn = $('#stand-button');
+    var betButtons = $('.bet-buttons')
     var playAgain = $('.play-again');
     var cashContainer = $('.player-cash');
     var betContainer = $('.player-bet');
     var placeBetText = $('.place-bets');
     var hideDealer = true;
+
+    // Event Handlers
     letsPlayBtn.on('click', startGame);
     dealBtn.on('click', deal);
     hitBtn.on('click', hit);
@@ -26,7 +29,7 @@ $(document).ready(function() {
         $('.win').removeClass('show');
         $('.lose').removeClass('show');
         placeBetText.addClass('show');
-        $('.bet-buttons').addClass('show');
+        betButtons.addClass('show');
         betContainer.html('<h3>Player Bet:</h3>');
         reset();
     });
@@ -34,14 +37,17 @@ $(document).ready(function() {
         var betAmount = $(this).attr('data-value');
         placeBets(betAmount);
     });
-    blackjack();
-    blackjack.player = new Player('Travis');
-    blackjack.dealer = new Dealer();
+    
 
+
+    //functions
     function startGame() {
+        blackjack();
+        blackjack.player = new Player('Travis');
+        blackjack.dealer = new Dealer();
         $('.start-game-module').hide();
         placeBetText.addClass('show');
-        $('.bet-buttons').addClass('show');
+        betButtons.addClass('show');
         $('.play-buttons').removeClass('show');
     }
 
@@ -50,7 +56,7 @@ $(document).ready(function() {
         var betAmount = bet;
         blackjack.player.bet += Number(betAmount);
         betContainer.html('<h3>Player Bet: $'+ blackjack.player.bet +'</h3>');
-        $('.bet-buttons').addClass('remove');
+        betButtons.addClass('remove');
         placeBetText.addClass('remove');
         $('.play-buttons').addClass('show');
 
@@ -168,6 +174,7 @@ $(document).ready(function() {
             $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
             $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
             blackjack.player.win = false;
+            console.log('monny');
             lose();
         }
     }
@@ -187,6 +194,7 @@ $(document).ready(function() {
                 $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
                 $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
                 blackjack.player.win = false;
+               console.log('daddy');
                 lose();
             }
             if(blackjack.dealer.points > 21){
@@ -221,7 +229,7 @@ $(document).ready(function() {
     function deal() {
         dealBtn.css('display', 'none');
         placeBetText.removeClass('show');
-        $('.bet-buttons').removeClass('show');
+        betButtons.removeClass('show');
         var card1 = drawCard();
         var card2 = drawCard();
         var carda = drawCard();
@@ -254,7 +262,15 @@ $(document).ready(function() {
         newcard.holder = 'player';
         blackjack.player.cards.push(newcard);
         buildCard(newcard);
-        hitDealer();
+        if(blackjack.player.points > 22){
+            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+           $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+           blackjack.player.win = false;
+           console.log('hillary');
+           lose();
+        }else {
+            hitDealer();
+        }
     }
 
     function hitDealer(){
@@ -275,45 +291,58 @@ $(document).ready(function() {
         var playerPoints = blackjack.player.points;
         var dealerPoints = blackjack.dealer.points;
         blackjack.stand = true;
-
         if(dealerPoints > 17){
-            if(playerPoints > dealerPoints){
-                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-                $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
-                blackjack.player.win = true;
-                win();
-            }
-            if(playerPoints < dealerPoints){
-                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-                $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
-                blackjack.player.win = false;
-                lose();
-            }
-            if(playerPoints === dealerPoints){
-                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-                hit();
-            }
+           if(playerPoints > dealerPoints){
+               $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+               $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+               blackjack.player.win = true;
+               console.log('grumpoy');
+               win();
+           }
+           if(playerPoints < dealerPoints){
+               $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+               $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+               blackjack.player.win = false;
+               console.log('hillary');
+               lose();
+           }
+           if(playerPoints === dealerPoints){
+               $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+               reset();
+           }
         }
         else if(playerPoints > dealerPoints){
-            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-            $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
-            do {
-                hitDealer();
-                stand();
-            }
-            while (blackjack.dealer.points < 18);
+           $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+           $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+           do {
+               hitDealer();
+               stand();
+               if(blackjack.dealer.points > 22){
+                    $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+                    $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+                    blackjack.player.win = true;
+                    console.log('bones');
+                    win();
+               }
+               if(blackjack.dealer.points === 21){
+                     $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+                   $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+                   blackjack.player.win = false;
+                    console.log('monkey');
+                   lose();
+               }
+           }
+           while (blackjack.dealer.points < 18);
         }
         else {
-            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-            $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
-            blackjack.player.win = false;
-            lose();
+           $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+           $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+           blackjack.player.win = false;
+           lose();
         }
     }
 
     function reset(){
-        //delete blackjack.player;
-        //delete blackjack.deck;
         blackjack.player.bet = 0;
         $('.play-buttons').removeClass('show');
         $('.playerPoints').html('');
