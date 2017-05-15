@@ -4,7 +4,7 @@ body,html {
 }
 
 body {
-  background: url('../images/dark_wood.png');
+  background: url('../images/tilegreen.jpg');
   background-repeat: repeat;
   color: gold;
 }
@@ -29,10 +29,23 @@ body {
 .lose h2 {
     color:  red;
 }
-.player-stats {
-  padding:  10px 20px;
-  color:  white;
-
+#player-stats {
+  background: url('../images/dark_wood.png');
+  width:  100%;
+  padding: 20px;
+  color: white;
+  border-bottom: 2px solid gold
+}
+#player-stats .player-cash, #player-stats .player-bet {
+  padding: 0;
+  text-align: center;
+}
+#player-stats .player-cash h3, #player-stats .player-bet h3 {
+  padding: 0;
+  margin: 0;
+  display:  block;
+}
+#player-stats .player-bet {
 }
 
 .player-cards, .dealer-cards {
@@ -136,10 +149,10 @@ body {
   bottom:  0;
   left:  0;
   width:  100%;
-  background-color:  #000;
+  background: url('../images/dark_wood.png');
   color:  white;
   border:  none;
-  border-top: 1px solid #222;
+  border-top: 2px solid gold;
   margin:  0;
 }
 .card .card-number {
