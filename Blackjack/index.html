@@ -21,6 +21,8 @@
 			<button class="btn btn-default btn-lg play-again">Play Again</button>
 		</div>
 	</div>
+	<div class="player-cash"></div>
+	<div class="player-bet"></div>
     <header>
         <div class="container text-center">
             <h1>BLACKJACK</h1>
@@ -46,22 +48,24 @@
         </div>
     </div>
     <div class="bottom-table well text-center">
-        <button id="deal-button" class="btn  btn-lg btn-primary">Deal</button>
-        <button id="hit-button" class="btn  btn-lg btn-primary">Hit</button>
-        <button id="stand-button" class="btn  btn-lg btn-primary">Stand</button>
+    	<div class="play-buttons">
+			<button id="deal-button" class="btn  btn-lg btn-primary">Deal</button>
+	        <button id="hit-button" class="btn  btn-lg btn-primary">Hit</button>
+	        <button id="stand-button" class="btn  btn-lg btn-primary">Stand</button>    		
+    	</div>
         <div class="bet-buttons">
             <div class="row">
                 <div class="col-xs-3 col-md-3">
-                    <button class="btn btn-lg bet-btn">Bet $100</button>
+                    <button data-value="100" class="btn btn-lg bet-btn">Bet $100</button>
                 </div>
                 <div class="col-xs-3 col-md-3">
-                    <button class="btn btn-lg bet-btn">Bet $150</button>
+                    <button data-value="150" class="btn btn-lg bet-btn">Bet $150</button>
                 </div>
                 <div class="col-xs-3 col-md-3">
-                    <button class="btn btn-lg bet-btn">Bet $250</button>
+                    <button data-value="250" class="btn btn-lg bet-btn">Bet $250</button>
                 </div>
                 <div class="col-xs-3 col-md-3">
-                    <button class="btn btn-lg bet-btn">Bet $500</button>
+                    <button data-value="500" class="btn btn-lg bet-btn">Bet $500</button>
                 </div>
             </div>
         </div>
