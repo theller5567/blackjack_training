@@ -181,7 +181,14 @@ $(document).ready(function() {
             dealerSum.push(dcards[i].point);
         }
         blackjack.dealer.points = countArray(dealerSum);
+        console.log('Dealer Sum: ',blackjack.dealer.points);
         if(blackjack.player.points < 22){
+            if(blackjack.dealer.points === 21){
+                $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+                blackjack.player.win = false;
+                lose();
+            }
             if(blackjack.dealer.points > 21){
                 $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
                 $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
@@ -256,6 +263,12 @@ $(document).ready(function() {
         blackjack.dealer.cards.push(newcard);
         $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
         buildCard(newcard);
+        if(blackjack.player.points === 21){
+            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+            $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+            blackjack.player.win = true;
+            win();
+        }
     }
 
     function stand(){
@@ -281,12 +294,20 @@ $(document).ready(function() {
                 hit();
             }
         }
-        else {
-            if(playerPoints > dealerPoints){
-                $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
-                $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+        else if(playerPoints > dealerPoints){
+            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+            $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+            do {
                 hitDealer();
+                stand();
             }
+            while (blackjack.dealer.points < 18);
+        }
+        else {
+            $('.dealer-cards').find('.card:nth-child(1)').addClass('show-card');
+            $('.dealerPoints').html('<h3>'+ blackjack.dealer.points +'</h3>');
+            blackjack.player.win = false;
+            lose();
         }
     }
 

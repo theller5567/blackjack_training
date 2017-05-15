@@ -11,23 +11,21 @@ body {
 
 .win, .lose {
   position: fixed;
-  width:  60%;
-  height:  200px;
+  width:  40%;
+  height:  300px;
   top:  30%;
-  left: calc(50% - 30%);
+  left: calc(50% - 20%);
   opacity:  0.9;
   border-radius: 4px;
-  background-color:  black;
+  background-color:  gold;
+  border:  4px solid black;
   z-index:  4;
   transition:  all 300ms;
   display:  none; 
 }
-.win h2 {
-  color: green;
+.win h2, .lose h2 {
+  color: black;
   margin-top:  10px;
-}
-.lose h2 {
-    color:  red;
 }
 .table {
   position:  relative;
