@@ -45,7 +45,7 @@ $(document).ready(function() {
     function placeBets(bet) {
         console.log('Bet: ', bet);
         var betAmount = bet;
-        blackjack.player.bet = Number(betAmount);
+        blackjack.player.bet += Number(betAmount);
         betContainer.html('<h3>Player Bet: $'+ blackjack.player.bet +'</h3>');
         $('.bet-buttons').addClass('remove');
         $('.play-buttons').addClass('show');
@@ -287,6 +287,7 @@ $(document).ready(function() {
     function reset(){
         //delete blackjack.player;
         //delete blackjack.deck;
+        blackjack.player.bet = 0;
         $('.play-buttons').removeClass('show');
         $('.playerPoints').html('');
         $('.dealerPoints').html('');

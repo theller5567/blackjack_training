@@ -29,7 +29,9 @@ body {
 .lose h2 {
     color:  red;
 }
-.mod {
+.player-stats {
+  padding:  10px 20px;
+  color:  white;
 
 }
 
