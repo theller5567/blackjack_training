@@ -97,7 +97,7 @@ body {
 }
 
 #startGame {
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 .bet-buttons {
@@ -138,8 +138,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: black;
-  background-image: url('../images/bg.jpeg');
+  background-color: rgba(0,0,0,0.9);
   background-size: cover;
   background-position: top center;
   padding: 20px;
