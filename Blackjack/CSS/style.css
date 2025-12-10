@@ -53,6 +53,7 @@ body {
   padding: 0;
   margin: 0;
   display:  block;
+  font-size: 3rem;
 }
 #player-stats .player-bet {
 }
@@ -87,6 +88,8 @@ body {
   background-color:  gold;
   color: black;
   border-color: black;
+  font-size: 3rem;
+  min-width: 200px;
 }
 
 .bottom-table {
@@ -118,7 +121,8 @@ body {
   height: 100%;
   opacity: 1;
   background-color: black;
-  /* background-image: url('../images/greenCard.jpg'); */
+  background-image: url('https://deckofcardsapi.com/static/img/back.png');
+  background-size: cover;
   /* border: 1px solid #55653e; */
   border: 1px solid black;
   transition: all 300ms;
@@ -146,12 +150,12 @@ body {
   position: relative;
   display: inline-block;
   margin: 20px 20px 20px -100px;
-  width: 150px;
+  width: 160px;
   font-size: 20px;
   font-weight: 700;
   box-shadow: 2px 5px rgba(0,0,0,0.3);
   height: 225px;
-  background: url('../images/greyCard.jpg');
+  background: url('https://deckofcardsapi.com/static/img/back.png');
   background-repeat: repeat;
   color: white;
   border-radius:  4px;
@@ -166,6 +170,7 @@ body {
   bottom:  0;
   left:  0;
   width:  100%;
+  min-height: 200px;
   background: url('../images/dark_wood.png');
   color:  white;
   border:  none;
@@ -187,5 +192,13 @@ body {
   color: white;
   font-size:  14px;
   text-transform: uppercase;
+}
 
+/* Show/hide utility classes used by JavaScript */
+.show {
+  display: block !important;
+}
+
+.remove {
+  display: none !important;
 }
